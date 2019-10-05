@@ -8,14 +8,14 @@ public class Die
 
 	public Die()
 	{
-		this.roll();
+		this.roll(); 
 	}
 
 	public Die(int[] predictable_rolls)
 	{
 		if(predictable_rolls == null)
 		{
-			throw new RuntimeException("null initializing int( array"); 
+			throw new RuntimeException("null initializing int array"); 
 		}
 		this.predictible = true;
 		this.rolls = predictable_rolls;
