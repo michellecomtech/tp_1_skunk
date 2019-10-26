@@ -38,6 +38,12 @@ public class Roll
 		}		
 	}
 	
+	public Roll(Dice dice)
+	{
+		this.dice = dice;
+	}
+	
+	
 	public int getDie1()
 	{
 		return this.die1Score;

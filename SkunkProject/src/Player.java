@@ -11,8 +11,9 @@ public class Player
 		this.playerId = playerId;
 	}
 	
-	public void inputScore(int playerScore)
-	{
+	public void inputScore(int playerScore, int playerId)
+	{	
+		this.playerId = playerId;
 		this.playerScore = playerScore;
 	}
 	
