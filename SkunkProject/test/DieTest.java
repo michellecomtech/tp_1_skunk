@@ -72,13 +72,5 @@ public class DieTest
 		die.roll();
 		assertEquals("fifth value not wrapping back to second value 2", 2, die.getLastRoll());
 	}
-	
-	@Test(expected=RuntimeException.class)
-	public void test_null_initial_int_array()
-	{	
-		Die die = new Die(null);
-		die.roll();
-	}
-	
 
 }

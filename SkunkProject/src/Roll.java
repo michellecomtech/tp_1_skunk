@@ -1,6 +1,6 @@
 
 public class Roll 
-{
+{ 
 	private int rollScore;
 	private int die1Score;
 	private int die2Score;
@@ -15,27 +15,7 @@ public class Roll
 	}
 	public int getRollScore()
 	{
-		return this.rollScore;
-	}
-	public void roll()
-	{
-		dice.roll();
-		this.rollScore = dice.getLastRoll();
-		this.die1Score = dice.GetDie1();
-		this.die2Score = dice.GetDie2();
-		
-		if (this.rollScore == 2)
-		{
-			this.doubleSkunk = true;
-		}		
-		else if (this.rollScore == 3)
-		{
-			this.skunkDeuce = true;
-		}
-		else if (this.die1Score == 1 || this.die2Score == 1)
-		{
-			this.skunk = true;
-		}		
+		return rollScore;
 	}
 	
 	public Roll(Dice dice)
@@ -43,6 +23,25 @@ public class Roll
 		this.dice = dice;
 	}
 	
+	public void roll()
+	{	
+		dice.roll();
+		this.rollScore = dice.getLastRoll();
+		this.die1Score = dice.getDie1();
+		this.die2Score = dice.getDie2();
+		if(rollScore == 2)
+		{
+			this.doubleSkunk = true;
+		}		
+		else if (rollScore == 3)
+		{
+			this.skunkDeuce = true;
+		}
+		else if (die1Score == 1 || die2Score == 1)
+		{
+			this.skunk = true;
+		}
+	}
 	
 	public int getDie1()
 	{
@@ -58,14 +57,17 @@ public class Roll
 	{
 		return this.skunk;
 	}
+	
 	public boolean getSkunkDeuce()
 	{
 		return this.skunkDeuce;
 	}
+	
 	public boolean getDoubleSkunk()
 	{
 		return this.doubleSkunk;
 	}
+	
 	public String toString()
 	{
 		return "The Score of this Roll: " + getRollScore();

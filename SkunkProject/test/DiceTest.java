@@ -78,12 +78,5 @@ public class DiceTest
 		dice.roll();
 		assertEquals("fifth value not wrapping back to second value 4", 4, dice.getLastRoll());
 	}
-	
-	@Test(expected=RuntimeException.class)
-	public void test_null_initial_int_array()
-	{	
-		Dice dice = new Dice(null, null);
-		dice.roll();
-	}
 
 }

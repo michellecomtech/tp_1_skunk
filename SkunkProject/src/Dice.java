@@ -30,7 +30,7 @@ public class Dice
 
 		this.die1 = new Die();
 		this.die2 = new Die();
-		this.roll();
+		//this.roll();
 	}
 
 	public Dice(Die die1, Die die2) // overloaded constructor
@@ -54,15 +54,20 @@ public class Dice
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 	
-	public int GetDie1()
+	public int getDie1()
 	{
 		return die1.getLastRoll();
 	}
 	
-	public int GetDie2()
+	public int getDie2()
 	{
 		return die2.getLastRoll();
 	}
+	
+	//public String toString()
+	//{
+	//	return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
+	//}
 	
 	// the following method converts the internals of
 	// this Dice object, and returns a descriptive String:
@@ -70,32 +75,29 @@ public class Dice
 	// Roll of 7 => 4 + 3
 	//
 
-	public String toString()
-	{
-		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
-	}
+
 
 	// static methods can go anywhere - but at end is one convention
 
-	public static final int NUM_TRIALS = 360;
+	//public static final int NUM_TRIALS = 360;
 
-	public static void main(String[] args)
-	{
+	//public static void main(String[] args)
+	//{
 		// simulate repeated rolls of Dice, counting the many double skunks
 		
-		Dice dice = new Dice();
-		int doubleSkunkCount = 0;
-
-		for (int i = 0; i < NUM_TRIALS; i++)
-		{
-			dice.roll();
-			StdOut.println(dice);
-
-			if (dice.getLastRoll() == 2)
-				doubleSkunkCount++;
-		}
-
-		StdOut.println("Actual count: " + doubleSkunkCount);
-		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
-	}
+//		Dice dice = new Dice();
+//		int doubleSkunkCount = 0;
+//
+//		for (int i = 0; i < NUM_TRIALS; i++)
+//		{
+//			dice.roll();
+//			StdOut.println(dice);
+//
+//			if (dice.getLastRoll() == 2)
+//				doubleSkunkCount++;
+//		}
+//
+//		StdOut.println("Actual count: " + doubleSkunkCount);
+//		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
+//	}
 }

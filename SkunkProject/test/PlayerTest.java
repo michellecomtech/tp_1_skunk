@@ -15,6 +15,7 @@ public class PlayerTest
 	{
 		String[] init_values_of_players = new String[]
 		{ "Mike", "Joe", "David" };
+		player = new Player();
 	}
 
 	@After
@@ -43,13 +44,13 @@ public class PlayerTest
 	}
 	
 	@Test
-	public void test_third_player_of_predictable()
+	public void test_change_name_player_of_predictable()
 	{
 		player = new Player("David", 3);
-		
+		player.named("Rob");
 		String name = player.getName();
 
-		assertEquals("the thrid player is not David", "David", name);
+		assertEquals("the thrid player's name is not Rob", "Rob", name);
 	}
 	
 	@Test
@@ -76,9 +77,42 @@ public class PlayerTest
 	public void test_score_of_thrid_player_of_predictable()
 	{
 		player = new Player("David", 3);
-		player.inputScore(28, 3);
+		player.addScore(28);
 		int scoreOfPlayer = player.getScore();
 		assertEquals("the score of the thrid player is not 28", 28, scoreOfPlayer);
 	}
+	
+	@Test
+	public void test_add_10_chip_of_player_of_predictable()
+	{
+		player.addChip(10, 47);
+		int chipOfPlayer = player.getChip();
+		assertEquals("the chips of the default player is not 60", 60, chipOfPlayer);
+	}
+	
+	@Test
+	public void test_remove_10_chip_of_player_of_predictable()
+	{
+		player.addChip(10, 47);
+		player.removeChip(10, 47);
+		int chipOfPlayer = player.getChip();
+		assertEquals("the chips of the default player is not 50", 50, chipOfPlayer);
+	}
 
+	@Test
+	public void test_Id1_init_of_3_players_of_predictable()
+	{
+		Player[] players = player.InitializePlayers(3);
+		int playerId1 = players[0].getId();
+		assertEquals("the ID of the first player is not 1", 1, playerId1);
+	}
+	
+	@Test
+	public void test_name2_init_of_3_players_of_predictable()
+	{
+		Player[] players = player.InitializePlayers(3);
+		String playerName2 = players[1].getName();
+		assertEquals("the Name of the second player is not Player2", "Player_2", playerName2);
+	}
+	
 }

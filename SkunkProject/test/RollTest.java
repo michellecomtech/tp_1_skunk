@@ -16,10 +16,14 @@ public class RollTest
 	@Before
 	public void setUp() throws Exception
 	{
-		int[] init_values = new int[]
+		int[] init_values_1 = new int[]
 		{ 3, 2, 1 };
-		die1 = new Die(init_values);
-		die2 = new Die(init_values);
+		
+		int[] init_values_2 = new int[]
+		{ 1, 1, 1 };
+		
+		die1 = new Die(init_values_1);
+		die2 = new Die(init_values_2);
 		dice = new Dice(die1, die2);
 		roll = new Roll(dice);
 		
@@ -37,7 +41,7 @@ public class RollTest
 		roll.roll();
 		int value = roll.getRollScore();
 
-		assertEquals("first value not 6", 6, value);
+		assertEquals("first value not 4", 4, value);
 	}
 	@Test
 	public void test_roll_2_of_predictable_roll()
@@ -45,7 +49,7 @@ public class RollTest
 
 		roll.roll();
 		roll.roll();
-		assertEquals("second value not 4", 4, roll.getRollScore());
+		assertEquals("second value not 3", 3, roll.getRollScore());
 	}
 	
 	@Test
@@ -76,15 +80,37 @@ public class RollTest
 		roll.roll();
 		roll.roll();
 		roll.roll();
-		assertEquals("fourth value not wrapping back to first value 6", 6, roll.getRollScore());
+		assertEquals("fourth value not wrapping back to first value 4", 4, roll.getRollScore());
 	}
 	
+	@Test
+	public void test_roll_SkunkDeuce_of_predictable()
+	{
+		roll.roll();
+		roll.roll();
+		assertEquals("Skunk Deuce is not true", true, roll.getSkunkDeuce());
+	}
 	
-	@Test(expected=RuntimeException.class)
-	public void test_null_initial_int_array()
-	{	
-		Dice dice = new Dice(null, null);
-		dice.roll();
+	@Test
+	public void test_roll_Skunk_of_predictable()
+	{
+		roll.roll();
+		assertEquals("Skunk is not true", true, roll.getSkunk());
 	}
 
+	@Test
+	public void test_roll_getDie1_of_predictable()
+	{
+		roll.roll();
+		roll.roll();
+		assertEquals("Die1 is not 2", 2, roll.getDie1());
+	}
+	
+	@Test
+	public void test_roll_getDie2_of_predictable()
+	{
+		roll.roll();
+		roll.roll();
+		assertEquals("Die2 is not 1", 1, roll.getDie2());
+	}
 }

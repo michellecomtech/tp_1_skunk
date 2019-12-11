@@ -13,10 +13,6 @@ public class Die
 
 	public Die(int[] predictable_rolls)
 	{
-		if(predictable_rolls == null)
-		{
-			throw new RuntimeException("null initializing int array"); 
-		}
 		this.predictible = true;
 		this.rolls = predictable_rolls;
 		this.index_of_next_roll = 0;
@@ -45,10 +41,10 @@ public class Die
 		}
 	}
 
-	@Override
-	public String toString() // this OVERRIDES the default Object.toString()
-	{
-		return "Die: " + this.getLastRoll();
-	}
+	//@Override
+	//public String toString() // this OVERRIDES the default Object.toString()
+	//{
+	//	return "Die: " + this.getLastRoll();
+	//}
 
 }
