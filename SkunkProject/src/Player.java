@@ -86,7 +86,6 @@ public class Player
 	
 	public void addChip(int chip)
 	{	
-		//this.playerId = playerId;
 		this.playerChip += chip;
 	}
 	

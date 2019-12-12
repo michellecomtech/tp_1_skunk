@@ -1,13 +1,12 @@
 import edu.princeton.cs.introcs.*;
-//import java.util.Scanner;
 
 public class SkunkUI implements UI
 {
-	public SkunkDomain skunkDomain;
+	public SkunkController skunkController;
 
-	public void setDomain(SkunkDomain skunkDomain)
+	public void setDomain(SkunkController skunkController)
 	{
-		this.skunkDomain = skunkDomain;
+		this.skunkController = skunkController;
 	}
 
 	public String promptReadAndReturn(String question)

@@ -1,13 +1,8 @@
-import edu.princeton.cs.introcs.StdIn;
-
-import edu.princeton.cs.introcs.StdOut;
-
 
 public class Turn 
 {
 	private int turnScore;	
 	private int rollNumber;
-	//private Roll[] rolls;
 	private Roll roll;
 	private int[] die1s;
 	private int[] die2s;
@@ -17,58 +12,44 @@ public class Turn
 	private boolean alive = true;
 	private boolean predictible = false;
 	
-	public Turn()
-	{
-		//this.rolls = new Roll[255];
-		//this.roll = new Roll();
-	}
-	
 	public Turn(Player player, Kitty kitty, UI ui)
 	{
 		this.player = player;
 		this.kitty = kitty;
-		this.player = player;
 		this.roll = new Roll();
 		this.ui = ui;
 		this.turnScore = 0; 
 		this.rollNumber = 0;
-		this.kitty = new Kitty();
 		this.die1s = new int[255];
 		this.die2s = new int[255];
 	}
 	
-	public Turn(Player player, Roll roll, Kitty kitty)
+	public Turn(Player player, Roll roll, Kitty kitty, UI ui)
 	{
 		this.roll = roll;
 		this.player = player;
 		this.kitty = kitty;
+		this.ui = ui;
+		this.turnScore = 0; 
+		this.rollNumber = 0;
+		this.die1s = new int[255];
+		this.die2s = new int[255];
 		this.predictible = true;
 	}
 	
 	public void aTurnFirstRoll()
 	{	
-		//player.setTurnScore(0);
-		
-		//if(!predictible)
-		//{
-		//	this.roll.roll();
-		//}
-		
 		roll.roll();
 		this.rollNumber += 1;
 		int firstRoll = roll.getRollScore();
 		ui.println("Your Die1 is: " + roll.getDie1());
 		ui.println("Your Die2 is: " + roll.getDie2());
 		ui.println("The score of the frist roll is: " + firstRoll);
-		
-
-		
+	
 		die1s[0] = roll.getDie1();
 		die2s[0] = roll.getDie2();
 		
-		
 		this.AddRollScore(firstRoll);
-		
 		
 		if (roll.getDoubleSkunk())
 		{
@@ -77,7 +58,7 @@ public class Turn
 			this.player.setTurnScore(0);
 			this.player.setGameScore(0);
 			this.player.addChip(-4);
-			kitty.addChipToKitty(4);
+			this.kitty.addChipToKitty(4);
 			ui.println("Sorry, your first rOll got a DoubleSkunk! Your turn is over! ");
 			ui.println("You lose the entire game score & 4 chips!");
 		}
@@ -88,7 +69,7 @@ public class Turn
 			this.player.setTurnScore(0);
 			this.player.addGameScore(0);
 			this.player.addChip(-2);
-			kitty.addChipToKitty(2);
+			this.kitty.addChipToKitty(2);
 			ui.println("Sorry, your first rOll got a SkunkDeuce! Your turn is over!");
 			ui.println("You lose this turn score & 2 chips!");
 		}
@@ -99,7 +80,7 @@ public class Turn
 			this.player.setTurnScore(0);
 			this.player.addGameScore(0);
 			this.player.addChip(-1);
-			kitty.addChipToKitty(1);
+			this.kitty.addChipToKitty(1);
 			ui.println("Sorry, your first rOll got a Skunk! Your turn is over!");
 			ui.println("You lose this turn score & 1 chip!");
 		}
@@ -122,7 +103,6 @@ public class Turn
 		ui.println("Your Die1 is: " + roll.getDie1());
 		ui.println("Your Die2 is: " + roll.getDie2());
 		ui.println("The score of this roll is: " + rollScore);
-		//this.AddRollScore(rollScore);
 		
 		if (roll.getDoubleSkunk())
 		{
@@ -130,7 +110,7 @@ public class Turn
 			this.player.setTurnScore(0);
 			this.player.setGameScore(0);
 			this.player.addChip(-4);
-			kitty.addChipToKitty(4);
+			this.kitty.addChipToKitty(4);
 			ui.println("Sorry, you got a DoubleSkunk! Your turn is over!");
 			ui.println("You lose the entire game score & 4 chips!");
 		}
@@ -140,7 +120,7 @@ public class Turn
 			this.player.addGameScore(-player.getTurnScore());
 			this.player.setTurnScore(0);
 			this.player.addChip(-2);
-			kitty.addChipToKitty(2);
+			this.kitty.addChipToKitty(2);
 			ui.println("Sorry, you got a SkunkDeuce! Your turn is over!");
 			ui.println("You lose this turn score & 2 chips!");
 		}
@@ -150,7 +130,7 @@ public class Turn
 			this.player.addGameScore(-player.getTurnScore());
 			this.player.setTurnScore(0);
 			this.player.addChip(-1);
-			kitty.addChipToKitty(1);
+			this.kitty.addChipToKitty(1);
 			ui.println("Sorry, you rOll got a Skunk! Your turn is over!");
 			ui.println("You lose this turn score & 1 chip!");
 		}
@@ -158,17 +138,17 @@ public class Turn
 		{
 			this.player.addTurnScore(rollScore);
 			this.player.addGameScore(rollScore);
-			ui.println("The score of this turn is: " + player.getTurnScore());
-			ui.println("The score of this game is: " + player.getGameScore());
+			ui.println("Accumulated score of this turn is: " + player.getTurnScore());
+			ui.println("Accumulated score of this game is: " + player.getGameScore());
 		}
 		
 	}
 	
 	public void turnBoard()
 	{
-		ui.println("-------------------------------------");
-		ui.println("<TurnScoreBroad> for player" + player.getId() + ": " + player.getName());
-		ui.println("-------------------------------------");
+		ui.println("------------------------------------");
+		ui.println("<TurnScoreBroad> for Player" + player.getId() + ": " + player.getName());
+		ui.println("------------------------------------");
 		ui.println("Roll_#   Die1   Die2   RollScore");
 		for (int i = 0; i < rollNumber; i++)
 		{ 
@@ -179,22 +159,12 @@ public class Turn
 		}
 		ui.println("------------------------------------");
 		ui.println("TurnScore  GameScore  Chips  Kitty");
-		ui.println("   "+ player.getTurnScore() + "          " + player.getGameScore() + "        " + player.getChip() + "      " + kitty.getChipTotal());
-		
+		ui.println("   "+ player.getTurnScore() + "          " + player.getGameScore() + "        " + player.getChip() + "      " + kitty.getChipTotal());	
 	}
-
-		
 	
 	public void AddRollScore(int rollScore)
 	{
-		//this.numberOfRolls += 1;
         this.turnScore += rollScore;
-	}
-	
-	public void RemoveRollScore(int rollScore)
-	{
-		//this.numberOfRolls += 1;
-        this.turnScore = this.turnScore - rollScore;
 	}
 	
 	public int getTurnScore()

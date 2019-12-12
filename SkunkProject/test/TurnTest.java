@@ -13,6 +13,8 @@ public class TurnTest
 	private Dice dice;
 	private Die die1;
 	private Die die2;
+	private Kitty kitty;
+	private UI ui;
 
 
 	@Before
@@ -31,11 +33,10 @@ public class TurnTest
 		roll = new Roll();
 		roll = new Roll(dice);
 		player = new Player();
-		turn = new Turn(player);
-		turn = new Turn(player, roll);		
-		int testScore = 0;
-		
-		
+		kitty = new Kitty();
+		turn = new Turn(player, kitty, ui);
+		turn = new Turn(player, roll, kitty, ui);		
+		int testScore = 0;		
 	}
 
 	@After
@@ -77,8 +78,8 @@ public class TurnTest
 	public void test_skunk_of_predictable_first_roll()
 	{
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.firstRoll(player);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnFirstRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("turn value of 1 roll is not 0", 0, value);
@@ -89,8 +90,8 @@ public class TurnTest
 	{
 		roll.roll();
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.firstRoll(player);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnFirstRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("turn value of 1 roll is not 0", 0, value);
@@ -102,8 +103,8 @@ public class TurnTest
 		roll.roll();
 		roll.roll();
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.firstRoll(player);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnFirstRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("turn value of 1 roll is not 0", 0, value);
@@ -115,8 +116,8 @@ public class TurnTest
 		roll.roll();
 		roll.roll();
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.aRoll(player, true);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnNextRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("final turn value of rolls is not 0", 0, value);
@@ -127,8 +128,8 @@ public class TurnTest
 	{
 		roll.roll();
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.aRoll(player, true);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnNextRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("final turn value of rolls is not 0", 0, value);
@@ -138,8 +139,8 @@ public class TurnTest
 	public void test_skunk_of_predictable_roll()
 	{
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.aRoll(player, true);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnNextRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("final turn value of rolls is not 0", 0, value);
@@ -149,8 +150,8 @@ public class TurnTest
 	public void test_not_alive_of_predictable_roll()
 	{
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.aRoll(player, false);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnNextRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("final turn value of rolls is not 0", 0, value);
@@ -168,8 +169,8 @@ public class TurnTest
 		dice = new Dice(die1, die2);
 		roll = new Roll(dice);
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.aRoll(player, true);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnNextRoll();
 		int value = turn.getTurnScore();
 
 		assertEquals("final value of rolls is not 5", 5, value);
@@ -179,8 +180,8 @@ public class TurnTest
 	public void test_alive_skunk_of_predictable_first_roll()
 	{
 		roll.roll();
-		turn = new Turn(player, roll);
-		turn.firstRoll(player);
+		turn = new Turn(player, roll, kitty, ui);
+		turn.aTurnFirstRoll();
 		boolean alive = turn.getAlive();
 
 		assertEquals("the boolean alive when getting a skunk of first roll is not false", false, alive);
