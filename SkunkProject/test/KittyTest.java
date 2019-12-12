@@ -34,7 +34,7 @@ public class KittyTest
 
 		assertEquals("the total chips in Kitty is not 10", 10, chips);
 	}
-
+	
 	@Test
 	public void test_add_20_of_predictable()
 	{

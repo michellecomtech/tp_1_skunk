@@ -61,7 +61,7 @@ public class RollTest
 		roll.roll();
 		assertEquals("third value not 2", 2, roll.getRollScore());
 	}
-	
+		
 	@Test
 	public void test_roll_3_of_predictable_roll_DoubleSkunk()
 	{

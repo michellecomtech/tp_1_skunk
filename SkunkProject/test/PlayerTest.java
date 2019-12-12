@@ -74,30 +74,44 @@ public class PlayerTest
 	}
 	
 	@Test
-	public void test_score_of_thrid_player_of_predictable()
+	public void test_roll_score_of_thrid_player_of_predictable()
+	{
+		player = new Player(3);
+		player.setRollScore(0);
+		player.addRollScore(8);
+		int scoreOfPlayer = player.getRollScore();
+		assertEquals("the score of the thrid player is not 8", 8, scoreOfPlayer);
+	}
+	
+	@Test
+	public void test_turn_score_of_thrid_player_of_predictable()
 	{
 		player = new Player("David", 3);
-		player.addScore(28);
-		int scoreOfPlayer = player.getScore();
+		player.setTurnScore(0);
+		player.addTurnScore(28);
+		int scoreOfPlayer = player.getTurnScore();
+		assertEquals("the score of the thrid player is not 28", 28, scoreOfPlayer);
+	}
+	
+	@Test
+	public void test_game_score_of_thrid_player_of_predictable()
+	{
+		player = new Player("David", 3);
+		player.setGameScore(0);
+		player.addGameScore(28);
+		int scoreOfPlayer = player.getGameScore();
 		assertEquals("the score of the thrid player is not 28", 28, scoreOfPlayer);
 	}
 	
 	@Test
 	public void test_add_10_chip_of_player_of_predictable()
 	{
-		player.addChip(10, 47);
+		player.setChip(0);
+		player.addChip(10);
 		int chipOfPlayer = player.getChip();
-		assertEquals("the chips of the default player is not 60", 60, chipOfPlayer);
+		assertEquals("the chips of the default player is not 10", 10, chipOfPlayer);
 	}
 	
-	@Test
-	public void test_remove_10_chip_of_player_of_predictable()
-	{
-		player.addChip(10, 47);
-		player.removeChip(10, 47);
-		int chipOfPlayer = player.getChip();
-		assertEquals("the chips of the default player is not 50", 50, chipOfPlayer);
-	}
 
 	@Test
 	public void test_Id1_init_of_3_players_of_predictable()

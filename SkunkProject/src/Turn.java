@@ -39,7 +39,13 @@ public class Turn
 	
 	public void aTurnFirstRoll()
 	{	
+		//if(!predictible)
+		//{
+		//	roll.roll();
+		//}
+		
 		roll.roll();
+		
 		this.rollNumber += 1;
 		int firstRoll = roll.getRollScore();
 		ui.println("Your Die1 is: " + roll.getDie1());
@@ -146,9 +152,9 @@ public class Turn
 	
 	public void turnBoard()
 	{
-		ui.println("------------------------------------");
+		ui.println("-------------------------------------");
 		ui.println("<TurnScoreBroad> for Player" + player.getId() + ": " + player.getName());
-		ui.println("------------------------------------");
+		ui.println("-------------------------------------");
 		ui.println("Roll_#   Die1   Die2   RollScore");
 		for (int i = 0; i < rollNumber; i++)
 		{ 
@@ -157,7 +163,7 @@ public class Turn
 			String rs = String.format("%2d", die1s[i] + die2s[i]);
 			ui.println("Roll#" + (i+1) + "   " + d1s + "     " + d2s + "      " + rs);
 		}
-		ui.println("------------------------------------");
+		ui.println("-------------------------------------");
 		ui.println("TurnScore  GameScore  Chips  Kitty");
 		ui.println("   "+ player.getTurnScore() + "          " + player.getGameScore() + "        " + player.getChip() + "      " + kitty.getChipTotal());	
 	}

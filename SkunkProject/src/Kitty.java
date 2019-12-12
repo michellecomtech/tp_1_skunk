@@ -6,11 +6,6 @@ public class Kitty
 	{
 		this.kittyChip = 0;
 	}
-	
-	public Kitty(int chip)
-	{
-		this.kittyChip = chip;
-	}
 
 	public void addChipToKitty(int chip)
 	{
@@ -25,11 +20,6 @@ public class Kitty
 	public int getChipTotal()
 	{
 		return this.kittyChip;
-	}
-	
-	public String toString()
-	{
-		return "" + getChipTotal();
 	}
 }
 

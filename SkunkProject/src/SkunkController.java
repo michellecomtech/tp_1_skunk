@@ -23,11 +23,11 @@ public class SkunkController
 
 	public boolean run()
 	{
-		ui.println("------------------------------------");
-		ui.println("        Merry Christmas!!!");
-		ui.println("------------------------------------");
+		ui.println("--------------------------------------");
+		ui.println("          Merry Christmas!!!");
+		ui.println("--------------------------------------");
 		ui.println("Welcome to Eric@47's <Game of Skunk>!");
-		ui.println("------------------------------------");
+		ui.println("--------------------------------------");
 		scanner = new Scanner(System.in);
 		ui.println("Please enter the number of players: ");
 		String numberOfPlayers = scanner.nextLine();
@@ -67,11 +67,11 @@ public class SkunkController
 				String playerReady = scanner.nextLine();
 				if("C".equalsIgnoreCase(playerReady))
 				{
-					ui.println("------------------------------------");
+					ui.println("-------------------------------------");
 					ui.println("<GameScoreBroad> for All Players");
-					ui.println("------------------------------------");
+					ui.println("-------------------------------------");
 					ui.println("Kitty has " + kitty.getChipTotal() + " chips!");
-					ui.println("------------------------------------");
+					ui.println("-------------------------------------");
 					ui.println("PlayerId   GameScore  Chips");
 					
 				
@@ -205,16 +205,16 @@ public class SkunkController
 		collectChips += kitty.getChipTotal(); 		
 		winner.addChip(collectChips);
 		
-		ui.println("------------------------------------");
-		ui.println("Congratulation!!! Player" + winner.getId() + " (" + winner.getName() + ") is the winner!!!");
-		ui.println("------------------------------------");
+		ui.println("------------------------------------------------");
+		ui.println("Congratulation! Player" + winner.getId() + " (" + winner.getName() + ") is the winner!!!");
+		ui.println("------------------------------------------------");
 		ui.println("Winner collects all chips in Kitty!");
 		ui.println("Plus 5 chips from each losing player!");
-		ui.println("Plus additional 5 chips from any player without a score!");
-		ui.println("------------------------------------");
+		ui.println("Plus 5 more chips from any player of 0 score!");
+		ui.println("------------------------------------------------");
 		ui.println("The Winner's total chips in this game is " + winner.getChip() + "!");
-		ui.println("-----Great Job! End of the game!----");
-		ui.println("---------------Enjoy!---------------");
+		ui.println("----------Great Job! End of the game!-----------");
+		ui.println("---------------------Enjoy!---------------------");
 		
 		return true;		
 	}

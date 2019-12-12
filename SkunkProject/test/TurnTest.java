@@ -54,37 +54,35 @@ public class TurnTest
 		assertEquals("turn value of 1 roll is not 6", 6, value);
 	}
 	
-	
 	@Test
-	public void test_number_of_2_rolls_of_predictable()
+	public void test_numberRolls_of_predictable_roll()
 	{
-		turn.AddRollScore(6);
-		turn.AddRollScore(4);
-		
-		assertEquals("number of 2 rolls is not 2", 2, turn.getNumberofRolls());
+		int value = turn.getNumberofRolls();
+
+		assertEquals("number of roll is not 0", 0, value);
 	}
 	
 	@Test
-	public void test_number_of_3_rolls_of_predictable()
+	public void test_alive_of_predictable_roll()
 	{
-		turn.AddRollScore(6);
-		turn.AddRollScore(4);
-		turn.AddRollScore(2);
-		
-		assertEquals("number of 3 rolls is not 3", 3, turn.getNumberofRolls());
+		boolean value = turn.getAlive();
+
+		assertEquals("alive is not true", true, value);
 	}
-	
+
+	/*
 	@Test
-	public void test_skunk_of_predictable_first_roll()
+	public void test_1_skunk_of_predictable_first_roll()
 	{
-		roll.roll();
+		//roll.roll();
 		turn = new Turn(player, roll, kitty, ui);
 		turn.aTurnFirstRoll();
-		int value = turn.getTurnScore();
+		int value = player.getTurnScore();
+		//int value = turn.getTurnScore();
 
 		assertEquals("turn value of 1 roll is not 0", 0, value);
 	}
-	
+		
 	@Test
 	public void test_skunk_deuce_of_predictable_first_roll()
 	{
@@ -186,4 +184,5 @@ public class TurnTest
 
 		assertEquals("the boolean alive when getting a skunk of first roll is not false", false, alive);
 	}
+	*/
 }

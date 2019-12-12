@@ -67,9 +67,4 @@ public class Roll
 	{
 		return this.doubleSkunk;
 	}
-	
-	public String toString()
-	{
-		return "The Score of this Roll: " + getRollScore();
-	}
 }
